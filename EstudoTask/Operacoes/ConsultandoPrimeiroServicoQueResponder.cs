@@ -49,8 +49,8 @@ namespace EstudoTask.Operacoes
         public async Task ConsultandoServicosETratandoConformeRespondem()
         {
             var listaThreadsConsultarServicos = new List<Task<string>>();
-            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico1.com.br", 10000));
-            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico2.com.br", 8000));
+            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico1.com.br", 30000));
+            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico2.com.br", 12000));
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico3.com.br", 3000));
 
             do
