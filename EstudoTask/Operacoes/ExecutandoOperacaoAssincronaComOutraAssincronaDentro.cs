@@ -9,7 +9,7 @@ namespace EstudoTask.Operacoes
 {
     public class ExecutandoOperacaoAssincronaComOutraAssincronaDentro
     {
-        public async Task ExecutarAsync()
+        public async Task<string> ExecutarAsync()
         {
             var retorno = await Task.Run(async () =>
             {
@@ -20,26 +20,13 @@ namespace EstudoTask.Operacoes
                 return textoRetornar;
             });
 
-            var retornoNovo = await Task.Run(() =>
-            {
-                var textoRetornar = "";
-                textoRetornar += ExecutarInterno();
-                textoRetornar += ExecutarInterno();
-                textoRetornar += ExecutarInterno();
-                return textoRetornar;
-            });
-
-            var threadComRetornoJaPronto = Task.FromResult("Já ta pronto");
-
-            var retornoTerceiro = await threadComRetornoJaPronto;
-
-            var textoFinal = retorno + retornoNovo;
+            return retorno;
         }
 
         private async Task<string> ExecutarInterno()
         {
             Thread.Sleep(3000);
-            return "Conclui a execução";
+            return "Conclui a execução ";
         }
     }
 }

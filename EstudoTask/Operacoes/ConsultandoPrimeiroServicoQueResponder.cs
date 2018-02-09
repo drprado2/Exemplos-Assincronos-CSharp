@@ -9,7 +9,7 @@ namespace EstudoTask.Operacoes
 {
     public class ConsultandoPrimeiroServicoQueResponder
     {
-        public async Task Consultar()
+        public async Task<string> Consultar()
         {
             var listaThreadsConsultarServicos = new List<Task<string>>();
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico1.com.br", 10000));
@@ -17,14 +17,13 @@ namespace EstudoTask.Operacoes
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico3.com.br", 3000));
 
             var threadRetornada = await Task.WhenAny(listaThreadsConsultarServicos);
-            var resultado = await threadRetornada;
-            var aa = "";
+            return await threadRetornada;
         }
 
-        public async Task ConsultarServicoComException()
+        public async Task<string> ConsultarServicoComException()
         {
             var listaThreadsConsultarServicos = new List<Task<string>>();
-            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico1.com.br", 10000));
+            listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico1.com.br", 15000));
             listaThreadsConsultarServicos.Add(ConsultarServicoExternoComException("www.servico2.com.br", 3000));
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico3.com.br", 8000));
 
@@ -43,7 +42,7 @@ namespace EstudoTask.Operacoes
                 }
             }
             while (string.IsNullOrWhiteSpace(resultado));
-            var aa = "";
+            return resultado;
         }
 
         public async Task ConsultandoServicosETratandoConformeRespondem()
@@ -53,12 +52,17 @@ namespace EstudoTask.Operacoes
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico2.com.br", 12000));
             listaThreadsConsultarServicos.Add(ConsultarServicoExterno("www.servico3.com.br", 3000));
 
+            var dataInicioConsultas = DateTime.Now;
+            Console.WriteLine("Vou começar a consultar os serviços");
+
             do
             {
                 var threadResultado = await Task.WhenAny(listaThreadsConsultarServicos);
                 var resultado = await threadResultado;
 
-                // faco algo com o resultado
+                var dataRespondeu = DateTime.Now;
+
+                Console.WriteLine($"Opa um serviço respondeu Serviço: {resultado} \n Tempo Percorrido: {(dataRespondeu - dataInicioConsultas).TotalSeconds}");
 
                 listaThreadsConsultarServicos.Remove(threadResultado);
             }

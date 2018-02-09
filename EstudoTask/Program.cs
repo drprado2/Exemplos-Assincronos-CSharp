@@ -34,7 +34,9 @@ namespace EstudoTask
 
                 Console.WriteLine("8 - Consultando serviços e tratando exceção \n");
 
-                Console.WriteLine("9 - cancelar \n");
+                Console.WriteLine("9 - Loops paralelos \n");
+
+                Console.WriteLine("0 - cancelar \n");
 
                 teclaApertada = Console.ReadLine();
 
@@ -65,13 +67,14 @@ namespace EstudoTask
                         executor.ConsultandoServicosComExcecaoNoMeio();
                         break;
                     case "9":
+                        executor.LoopsParalelos();
                         continue;
                     default:
                         Console.WriteLine("\n\n xxx - Opção inválida - xxx \n\n");
                         break;
                 }
             }
-            while (teclaApertada != "9");
+            while (teclaApertada != "0");
         }
     }
 }

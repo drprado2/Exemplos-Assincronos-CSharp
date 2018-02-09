@@ -4,3 +4,9 @@ C:\Users\adriano.oliveira\Documents\Adriano\Projetos Estudos\Estudo TASK\EstudoT
 C:\Users\adriano.oliveira\Documents\Adriano\Projetos Estudos\Estudo TASK\EstudoTask\EstudoTask\obj\Debug\EstudoTask.csproj.CoreCompileInputs.cache
 C:\Users\adriano.oliveira\Documents\Adriano\Projetos Estudos\Estudo TASK\EstudoTask\EstudoTask\obj\Debug\EstudoTask.exe
 C:\Users\adriano.oliveira\Documents\Adriano\Projetos Estudos\Estudo TASK\EstudoTask\EstudoTask\obj\Debug\EstudoTask.pdb
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\bin\Debug\EstudoTask.exe.config
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\bin\Debug\EstudoTask.exe
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\bin\Debug\EstudoTask.pdb
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\obj\Debug\EstudoTask.csproj.CoreCompileInputs.cache
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\obj\Debug\EstudoTask.exe
+C:\Users\drprado2\Documents\Adriano\Exemplos-Assincronos-CSharp\EstudoTask\obj\Debug\EstudoTask.pdb

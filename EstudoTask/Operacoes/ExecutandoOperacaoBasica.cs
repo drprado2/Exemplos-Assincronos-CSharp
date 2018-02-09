@@ -25,11 +25,11 @@ namespace EstudoTask.Operacoes
             return "Concluiu métodos";
         }
 
-        public void CancelandoTask(CancellationToken token)
+        public Task CancelandoTask(CancellationToken token)
         {
-            var resultB = Task.Run(() => 
+            return Task.Run(() => 
             {
-                Thread.Sleep(15000);
+                Thread.Sleep(7000);
                 if (token.IsCancellationRequested)
                     token.ThrowIfCancellationRequested();
                 var diretorioAtual = Directory.GetCurrentDirectory();

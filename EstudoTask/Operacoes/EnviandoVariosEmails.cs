@@ -9,49 +9,35 @@ namespace EstudoTask.Operacoes
 {
     public class EnviandoVariosEmails
     {
+        private readonly EmailSender _emailSender = new EmailSender();
+
         public async Task Enviar()
         {
-            var emailsEnviar = new List<Email>();
-            for(var i = 0; i < 10; i++)
+            var emailsEnviar = new List<EmailMessage>();
+            var emailTo = new List<string>() {"drprado2@gmail.com"};
+
+            for(var i = 0; i < 5; i++)
             {
-                emailsEnviar.Add(new Email($"Pedro{i}@gmail.com", "Esse é o conteúdo {i}"));
+                emailsEnviar.Add(new EmailMessage(emailTo, "Eita async é bom demais", $"Esse é o conteúdo {i}"));
             }
 
-            var threadsEnviarEmails = emailsEnviar.Select(x => EnviarEmail(x)).ToList();
-
-            await Task.WhenAll(threadsEnviarEmails);
-
-            var aa = "aguardando";
+            await _emailSender.SendManyAsync(emailsEnviar);
         }
 
         public async Task EnviandoComExcecaoNoMeio()
         {
-            var emailsEnviar = new List<Email>();
+            var emailsEnviar = new List<EmailMessage>();
+            var emailTo = new List<string>() {"drprado2@gmail.com"};
+
             for(var i = 0; i < 3; i++)
             {
                 if(i == 1)
                     emailsEnviar.Add(null);
                 else
-                    emailsEnviar.Add(new Email($"Pedro{i}@gmail.com", "Esse é o conteúdo {i}"));
-
+                emailsEnviar.Add(new EmailMessage(emailTo, "Eita async é bom demais", $"Esse é o conteúdo {i}"));
             }
 
-            var threadsEnviarEmails = emailsEnviar.Select(x => EnviarEmail(x)).ToList();
-
-            try
-            {
-                await Task.WhenAll(threadsEnviarEmails);
-            }
-            catch(Exception e)
-            {
-                var erro = e;
-
-                // se quiser pegar todos os erros
-                var threadsQueDeramErro = threadsEnviarEmails.Where(x => x.IsFaulted).ToList();
-                var erroDeExemplo = threadsQueDeramErro[0].Exception;
-            }
-
-            var aa = "aguardando";
+            await _emailSender.SendManyAsync(emailsEnviar);
         }
 
         private async Task<bool> EnviarEmail(Email email)
